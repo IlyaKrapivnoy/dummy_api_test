@@ -1,4 +1,3 @@
-import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './components/Header';
 
