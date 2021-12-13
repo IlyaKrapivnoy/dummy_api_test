@@ -1,10 +1,19 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const Users = () => {
+    // useEffect(() => {
+    //     fetch('https://jsonplaceholder.typicode.com/todos')
+    //         .then((response) => response.json())
+    //         .then((json) => setGetUsers(json));
+    // }, []);
+
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/todos')
-            .then((response) => response.json())
-            .then((json) => setGetUsers(json));
+        return axios
+            .get('https://jsonplaceholder.typicode.com/todos')
+            .then((response) => {
+                setGetUsers(response.data);
+            });
     }, []);
 
     const [getUsers, setGetUsers] = useState([]);
