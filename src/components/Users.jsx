@@ -1,23 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core';
+import { Container, Grid, makeStyles } from '@material-ui/core';
+import UserCard from './UserCard';
 
 const useStyles = makeStyles({
-    root: {
-        maxWidth: 200,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px 10px 10px',
-    },
-    media: {
-        height: 80,
-        width: 80,
-        borderRadius: '50%',
+    cards: {
+        margin: '90px 0 50px',
     },
 });
 
@@ -40,23 +28,16 @@ const Users = () => {
     const [getUsers, setGetUsers] = useState([]);
 
     return (
-        <>
+        <Container>
             {console.log(getUsers)}
-            {getUsers.map((user) => (
-                <Card className={classes.root} key={user.id}>
-                    <CardMedia
-                        className={classes.media}
-                        image={user.picture}
-                        title='Contemplative Reptile'
-                    />
-                    <CardContent>
-                        <Typography variant='subtitle1'>
-                            {user.firstName} {user.lastName}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            ))}
-        </>
+            <Grid container className={classes.cards} spacing={3}>
+                {getUsers.map((user) => (
+                    <Grid item xs={12} sm={6} md={3} key={user.id}>
+                        <UserCard user={user} />
+                    </Grid>
+                ))}
+            </Grid>
+        </Container>
     );
 };
 
