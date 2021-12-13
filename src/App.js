@@ -1,7 +1,14 @@
 import './App.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from './components/Header';
 
 function App() {
-    return <div className='App'>test</div>;
+    return (
+        <div>
+            <CssBaseline />
+            <Header />
+        </div>
+    );
 }
 
 export default App;
