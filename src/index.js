@@ -7,12 +7,16 @@ import { Provider } from 'react-redux';
 
 const defaultState = {
     users: [],
+    loading: false,
 };
 
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD_USERS':
-            return { ...state, users: state.users + action.payload };
+            return { ...state, users: state.users.concat(action.payload) };
+
+        case 'SET_LOADING':
+            return { ...state, loading: action.payload };
 
         default:
             return state;

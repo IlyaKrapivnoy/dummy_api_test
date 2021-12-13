@@ -6,7 +6,7 @@ import {
     CardMedia,
     CardContent,
 } from '@material-ui/core';
-// import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
     title: {
@@ -21,9 +21,8 @@ const UserCard = ({ user }) => {
 
     return (
         <>
-            {/* <CardActionArea component={RouterLink} to='/questions'> */}
             <Card>
-                <CardActionArea>
+                <CardActionArea component={RouterLink} to={`/user/${user.id}`}>
                     <CardMedia
                         component='img'
                         height='100'
