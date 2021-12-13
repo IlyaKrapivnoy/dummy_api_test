@@ -2,17 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const Users = () => {
-    // useEffect(() => {
-    //     fetch('https://jsonplaceholder.typicode.com/todos')
-    //         .then((response) => response.json())
-    //         .then((json) => setGetUsers(json));
-    // }, []);
-
     useEffect(() => {
-        return axios
-            .get('https://jsonplaceholder.typicode.com/todos')
-            .then((response) => {
-                setGetUsers(response.data);
+        const APP_ID = '61b724480aaff9678bd56847';
+        axios
+            .get('https://dummyapi.io/data/v1/user/', {
+                headers: {
+                    'app-id': APP_ID,
+                },
+            })
+            .then(function (response) {
+                setGetUsers(response.data.data);
             });
     }, []);
 
