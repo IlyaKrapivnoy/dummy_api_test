@@ -22,7 +22,10 @@ const Users = () => {
             {console.log(getUsers)}
             <ul>
                 {getUsers.map((user) => (
-                    <li>{user.id}</li>
+                    <li key={user.id}>
+                        <img src={user.picture} alt='user' />
+                        {user.firstName} {user.lastName}
+                    </li>
                 ))}
             </ul>
         </>
