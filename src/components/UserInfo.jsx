@@ -1,3 +1,4 @@
+import { CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -9,7 +10,18 @@ const UserInfo = () => {
     const loading = useSelector((state) => state.loading);
     console.log('users >>>', user);
     if (loading) {
-        return <p>Loading</p>;
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    height: 100,
+                    alignItems: 'center',
+                }}
+            >
+                <CircularProgress color='secondary' />
+            </div>
+        );
     }
 
     if (!user) {
