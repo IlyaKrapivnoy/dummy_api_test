@@ -13,7 +13,7 @@ const defaultState = {
 
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'ADD_USERS':
+        case 'SHOW_USERS':
             return { ...state, users: state.users.concat(action.payload) };
 
         case 'SHOW_USER_INFO':

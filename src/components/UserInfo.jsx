@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Loader from './Loader';
 
@@ -27,19 +26,13 @@ const UserInfo = () => {
     const classes = useStyles();
 
     const { id } = useParams();
-    // const user = useSelector((state) =>
-    //     state.user.find((item) => item.id === id)
-    // );
 
     const dispatch = useDispatch();
-    // const user = useSelector((state) => state.user);
-    // const { id } = useParams();
-
     const user = useSelector((state) => state.user);
 
     useEffect(() => {
         const APP_ID = '61b724480aaff9678bd56847';
-        // dispatch({ type: 'SET_LOADING', payload: true });
+        dispatch({ type: 'SET_LOADING', payload: true });
         axios
             .get(`https://dummyapi.io/data/v1/user/${id}`, {
                 headers: {
@@ -47,12 +40,11 @@ const UserInfo = () => {
                 },
             })
             .then((response) => {
-                console.log('response.data>>>', response.data);
                 dispatch({
                     type: 'SHOW_USER_INFO',
                     payload: response.data,
                 });
-                // dispatch({ type: 'SET_LOADING', payload: false });
+                dispatch({ type: 'SET_LOADING', payload: false });
             });
     }, [dispatch, id]);
 

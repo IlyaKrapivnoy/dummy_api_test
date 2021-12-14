@@ -15,7 +15,7 @@ const UsersLoader = ({ children }) => {
                 },
             })
             .then((response) => {
-                dispatch({ type: 'ADD_USERS', payload: response.data.data });
+                dispatch({ type: 'SHOW_USERS', payload: response.data.data });
                 dispatch({ type: 'SET_LOADING', payload: false });
             });
     }, [dispatch]);
