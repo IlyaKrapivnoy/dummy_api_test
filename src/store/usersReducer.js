@@ -21,3 +21,18 @@ export const usersReducer = (state = defaultState, action) => {
             return state;
     }
 };
+
+export const toggleLoader = (payload) => ({
+    type: SET_LOADING,
+    payload,
+});
+
+export const displayUserInfo = (payload) => ({
+    type: SHOW_USER_INFO,
+    payload,
+});
+
+export const displayUserList = (payload) => ({
+    type: SHOW_USERS,
+    payload,
+});

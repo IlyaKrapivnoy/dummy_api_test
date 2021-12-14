@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import Loader from './Loader';
+import { toggleLoader, displayUserInfo } from '../store/usersReducer';
 
 const useStyles = makeStyles({
     titles: {
@@ -32,7 +33,7 @@ const UserInfo = () => {
 
     useEffect(() => {
         const APP_ID = '61b724480aaff9678bd56847';
-        dispatch({ type: 'SET_LOADING', payload: true });
+        dispatch(toggleLoader(true));
         axios
             .get(`https://dummyapi.io/data/v1/user/${id}`, {
                 headers: {
@@ -40,11 +41,8 @@ const UserInfo = () => {
                 },
             })
             .then((response) => {
-                dispatch({
-                    type: 'SHOW_USER_INFO',
-                    payload: response.data,
-                });
-                dispatch({ type: 'SET_LOADING', payload: false });
+                dispatch(displayUserInfo(response.data));
+                dispatch(toggleLoader(false));
             });
     }, [dispatch, id]);
 
