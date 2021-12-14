@@ -2,32 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
-const defaultState = {
-    users: [],
-    user: {},
-    loading: false,
-};
-
-const reducer = (state = defaultState, action) => {
-    switch (action.type) {
-        case 'SHOW_USERS':
-            return { ...state, users: state.users.concat(action.payload) };
-
-        case 'SHOW_USER_INFO':
-            return { ...state, user: action.payload };
-
-        case 'SET_LOADING':
-            return { ...state, loading: action.payload };
-
-        default:
-            return state;
-    }
-};
-
-const store = createStore(reducer);
+import { store } from './store/index';
 
 ReactDOM.render(
     <React.StrictMode>
