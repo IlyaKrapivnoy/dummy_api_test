@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../axiosInstance';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
@@ -32,18 +32,11 @@ const UserInfo = () => {
     const user = useSelector((state) => state.user);
 
     useEffect(() => {
-        const APP_ID = '61b724480aaff9678bd56847';
         dispatch(toggleLoader(true));
-        axios
-            .get(`https://dummyapi.io/data/v1/user/${id}`, {
-                headers: {
-                    'app-id': APP_ID,
-                },
-            })
-            .then((response) => {
-                dispatch(displayUserInfo(response.data));
-                dispatch(toggleLoader(false));
-            });
+        axios.get(`/${id}`, {}).then((response) => {
+            dispatch(displayUserInfo(response.data));
+            dispatch(toggleLoader(false));
+        });
     }, [dispatch, id]);
 
     const loading = useSelector((state) => state.loading);
@@ -61,8 +54,8 @@ const UserInfo = () => {
         <div className={classes.userProfile}>
             <img src={user.picture} alt='user' className={classes.userPic} />
             <Typography className={classes.infoLine}>
-                <span className={classes.titles}>Name:</span> {user.title}{' '}
-                {user.firstName} {user.lastName}
+                <span className={classes.titles}>Name:</span> {user.firstName}{' '}
+                {user.lastName}
             </Typography>
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>Email:</span> {user.email}
@@ -73,6 +66,6 @@ const UserInfo = () => {
             </Typography>
         </div>
     );
-};;
+};
 
 export default UserInfo;
