@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 
 const defaultState = {
     users: [],
-    user: [],
     loading: false,
 };
 
@@ -17,7 +16,7 @@ const reducer = (state = defaultState, action) => {
             return { ...state, users: state.users.concat(action.payload) };
 
         case 'ADD_USER':
-            return { ...state, user: state.user.concat(action.payload) };
+            return { ...state, user: state.users.concat(action.payload) };
 
         case 'SET_LOADING':
             return { ...state, loading: action.payload };

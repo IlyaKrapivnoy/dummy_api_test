@@ -27,10 +27,15 @@ const UserInfo = () => {
     const classes = useStyles();
 
     const { id } = useParams();
-    const user = useSelector((state) =>
-        state.user.find((item) => item.id === id)
-    );
+    // const user = useSelector((state) =>
+    //     state.user.find((item) => item.id === id)
+    // );
+
     const dispatch = useDispatch();
+    const user = useSelector((state) =>
+        state.users.find((item) => item.id === id)
+    );
+
     useEffect(() => {
         const APP_ID = '61b724480aaff9678bd56847';
         dispatch({ type: 'SET_LOADING', payload: true });
@@ -45,12 +50,16 @@ const UserInfo = () => {
                 dispatch({ type: 'ADD_USER', payload: response.data });
                 dispatch({ type: 'SET_LOADING', payload: false });
             });
-    }, [dispatch, user.id]);
+    }, [dispatch, user?.id]);
 
     const loading = useSelector((state) => state.loading);
     if (!user) {
-        return <p>User not found</p>;
+        return;
     }
+    
+    // if (!user) {
+    //     return <p>User not found</p>;
+    // }
     if (loading) {
         return <Loader />;
     }
@@ -74,6 +83,6 @@ const UserInfo = () => {
             </Typography>
         </div>
     );
-};
+};;
 
 export default UserInfo;
