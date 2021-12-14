@@ -1,3 +1,5 @@
+import { SHOW_USERS, SHOW_USER_INFO, SET_LOADING } from './types';
+
 const defaultState = {
     users: [],
     user: {},
@@ -6,13 +8,13 @@ const defaultState = {
 
 export const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'SHOW_USERS':
+        case SHOW_USERS:
             return { ...state, users: state.users.concat(action.payload) };
 
-        case 'SHOW_USER_INFO':
+        case SHOW_USER_INFO:
             return { ...state, user: action.payload };
 
-        case 'SET_LOADING':
+        case SET_LOADING:
             return { ...state, loading: action.payload };
 
         default:
