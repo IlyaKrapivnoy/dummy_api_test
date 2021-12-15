@@ -25,6 +25,9 @@ module.exports = {
         'simple-import-sort/exports': 'error',
         'no-duplicate-imports': 'error',
         // 'func-names': ['error', 'never'],
+        'default-param-last': 0,
+        'import/prefer-default-export': 'off',
+        'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     },
     settings: {
         react: {
