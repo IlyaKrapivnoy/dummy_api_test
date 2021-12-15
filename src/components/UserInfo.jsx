@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-const UserInfo = function () {
+const UserInfo = () => {
     const classes = useStyles();
 
     const { id } = useParams();

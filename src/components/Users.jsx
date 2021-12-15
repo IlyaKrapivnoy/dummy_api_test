@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import UserCard from './UserCard';
 
-const Users = function () {
+const Users = () => {
     const users = useSelector((state) => state.users);
 
     return (

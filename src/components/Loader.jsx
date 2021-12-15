@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Loader = function () {
+const Loader = () => {
     const classes = useStyles();
 
     return (

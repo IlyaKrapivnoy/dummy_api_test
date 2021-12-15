@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     },
 });
 
-const UserCard = function({ user }) {
+const UserCard = ({ user }) => {
     const classes = useStyles();
 
     return (

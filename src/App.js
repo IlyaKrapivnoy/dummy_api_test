@@ -7,7 +7,7 @@ import UserInfo from './components/UserInfo';
 import Users from './components/Users';
 import UsersLoader from './components/UsersLoader';
 
-const App = function () {
+const App = () => {
     return (
         <UsersLoader>
             <Router>

@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Layout = function ({ children }) {
+const Layout = ({ children }) => {
     const classes = useStyles();
     return (
         <div>

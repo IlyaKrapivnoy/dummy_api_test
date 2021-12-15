@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Header = function () {
+const Header = () => {
     const classes = useStyles();
 
     return (
