@@ -1,17 +1,34 @@
 module.exports = {
+    extends: ['airbnb', 'prettier'],
     env: {
-        browser: true,
         es2021: true,
+        node: true,
+        browser: true,
     },
-    extends: ['eslint:recommended', 'plugin:react/recommended'],
+    parser: 'babel-eslint',
     parserOptions: {
-        ecmaVersion: 8,
         ecmaFeatures: {
             jsx: true,
         },
-        ecmaVersion: 13,
+        ecmaVersion: 12,
         sourceType: 'module',
     },
-    plugins: ['react'],
-    rules: {},
+    plugins: [
+        'react-hooks',
+        'prettier',
+        'simple-import-sort',
+        'autofix',
+        'import-order-autofix',
+    ],
+    rules: {
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error',
+        'no-duplicate-imports': 'error',
+        // 'func-names': ['error', 'never'],
+    },
+    settings: {
+        react: {
+            version: 'latest',
+        },
+    },
 };

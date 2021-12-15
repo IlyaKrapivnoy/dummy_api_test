@@ -1,8 +1,8 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { CssBaseline } from '@material-ui/core';
-import Header from './Header';
+import { CssBaseline, makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import Header from './Header';
 
 const useStyles = makeStyles({
     main: {
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Layout = ({ children }) => {
+const Layout = function ({ children }) {
     const classes = useStyles();
     return (
         <div>
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.element.isRequired,
 };
 
 export default Layout;

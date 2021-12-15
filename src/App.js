@@ -1,12 +1,13 @@
 import React from 'react';
+import { Redirect, Switch } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Switch, Redirect } from 'react-router';
-import Users from './components/Users';
-import UserInfo from './components/UserInfo';
+
 import Layout from './components/Layout';
+import UserInfo from './components/UserInfo';
+import Users from './components/Users';
 import UsersLoader from './components/UsersLoader';
 
-function App() {
+const App = function () {
     return (
         <UsersLoader>
             <Router>
@@ -26,6 +27,6 @@ function App() {
             </Router>
         </UsersLoader>
     );
-}
+};
 
 export default App;

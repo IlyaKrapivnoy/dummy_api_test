@@ -1,4 +1,4 @@
-import { GET_USERS, GET_USER_INFO, SET_LOADING } from './types';
+import { GET_USER_INFO, GET_USERS, SET_LOADING } from './types';
 
 const defaultState = {
     users: [],

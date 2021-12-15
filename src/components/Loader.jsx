@@ -1,5 +1,5 @@
-import React from 'react';
 import { CircularProgress, makeStyles } from '@material-ui/core';
+import React from 'react';
 
 const useStyles = makeStyles({
     loader: {
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Loader = () => {
+const Loader = function () {
     const classes = useStyles();
 
     return (

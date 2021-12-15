@@ -1,6 +1,7 @@
-import axios from '../axiosInstance';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
+import axios from '../axiosInstance';
 import { displayUserList, toggleLoader } from '../store/usersReducer';
 
 const UsersLoader = ({ children }) => {

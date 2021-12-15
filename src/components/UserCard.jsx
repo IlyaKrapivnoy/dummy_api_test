@@ -1,14 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import {
     Card,
     CardActionArea,
-    CardMedia,
     CardContent,
+    CardMedia,
+    makeStyles,
 } from '@material-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
     title: {
@@ -18,41 +18,39 @@ const useStyles = makeStyles({
     },
 });
 
-const UserCard = ({ user }) => {
+const UserCard = function({ user }) {
     const classes = useStyles();
 
     return (
-        <>
-            <Card>
-                <CardActionArea component={RouterLink} to={`/user/${user.id}`}>
-                    <CardMedia
-                        component='img'
-                        height='100'
-                        image={user.picture}
-                        style={{ objectFit: 'contain' }}
-                        alt='users'
-                    />
-                    <CardContent>
-                        <Typography
-                            variant='subtitle1'
-                            className={classes.title}
-                        >
-                            {user.firstName} {user.lastName}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </>
+        <Card>
+            <CardActionArea component={RouterLink} to={`/user/${user.id}`}>
+                <CardMedia
+                    component='img'
+                    height='100'
+                    image={user.picture}
+                    style={{ objectFit: 'contain' }}
+                    alt='users'
+                />
+                <CardContent>
+                    <Typography variant='subtitle1' className={classes.title}>
+                        {user.firstName} {user.lastName}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card>
     );
-};
+}
 
 UserCard.propTypes = {
     user: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        picture: PropTypes.urlPropType,
+        picture: PropTypes.string,
         firstName: PropTypes.string,
         lastName: PropTypes.string,
     }),
 };
+
+const defaultProps = {};
+UserCard.defaultProps = defaultProps;
 
 export default UserCard;

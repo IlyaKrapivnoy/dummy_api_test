@@ -1,10 +1,11 @@
-import axios from '../axiosInstance';
+import { makeStyles, Typography } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeStyles, Typography } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
+
+import axios from '../axiosInstance';
+import { displayUserInfo, toggleLoader } from '../store/usersReducer';
 import Loader from './Loader';
-import { toggleLoader, displayUserInfo } from '../store/usersReducer';
 
 const useStyles = makeStyles({
     titles: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-const UserInfo = () => {
+const UserInfo = function () {
     const classes = useStyles();
 
     const { id } = useParams();
@@ -47,7 +48,7 @@ const UserInfo = () => {
         return <p>User not found</p>;
     }
 
-    let formattedDate = new Date(user.dateOfBirth).toLocaleDateString();
+    const formattedDate = new Date(user.dateOfBirth).toLocaleDateString();
 
     return (
         <div className={classes.userProfile}>
