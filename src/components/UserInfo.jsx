@@ -1,10 +1,11 @@
-import axios from '../axiosInstance';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
+import axios from '../axiosInstance';
+import { displayUserInfo, toggleLoader } from '../store/usersReducer';
 import Loader from './Loader';
-import { toggleLoader, displayUserInfo } from '../store/usersReducer';
 
 const useStyles = makeStyles({
     titles: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-const UserInfo = () => {
+const UserInfo = function () {
     const classes = useStyles();
 
     const { id } = useParams();
@@ -33,7 +34,7 @@ const UserInfo = () => {
 
     useEffect(() => {
         dispatch(toggleLoader(true));
-        axios.get(`/${id}`, {}).then((response) => {
+        axios.get(`/user/${id}`, {}).then((response) => {
             dispatch(displayUserInfo(response.data));
             dispatch(toggleLoader(false));
         });
@@ -47,8 +48,7 @@ const UserInfo = () => {
         return <p>User not found</p>;
     }
 
-    let userDataOfBirthFromAPI = `${user.dateOfBirth}`;
-    let userDataOfBirth = new Date(userDataOfBirthFromAPI).toLocaleDateString();
+    const formattedDate = new Date(user.dateOfBirth).toLocaleDateString();
 
     return (
         <div className={classes.userProfile}>
@@ -62,7 +62,7 @@ const UserInfo = () => {
             </Typography>
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>Date of Birth:</span>{' '}
-                {userDataOfBirth}
+                {formattedDate}
             </Typography>
         </div>
     );

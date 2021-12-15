@@ -1,9 +1,11 @@
 import { Container, Grid } from '@material-ui/core';
-import UserCard from './UserCard';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-const Users = () => {
+import UserCard from './UserCard';
+
+const Users = function () {
     const users = useSelector((state) => state.users);
 
     return (

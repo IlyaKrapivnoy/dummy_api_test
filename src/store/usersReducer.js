@@ -1,4 +1,4 @@
-import { SHOW_USERS, SHOW_USER_INFO, SET_LOADING } from './types';
+import { GET_USER_INFO, GET_USERS, SET_LOADING } from './types';
 
 const defaultState = {
     users: [],
@@ -8,10 +8,10 @@ const defaultState = {
 
 export const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case SHOW_USERS:
-            return { ...state, users: state.users.concat(action.payload) };
+        case GET_USERS:
+            return { ...state, users: action.payload };
 
-        case SHOW_USER_INFO:
+        case GET_USER_INFO:
             return { ...state, user: action.payload };
 
         case SET_LOADING:
@@ -28,11 +28,11 @@ export const toggleLoader = (payload) => ({
 });
 
 export const displayUserInfo = (payload) => ({
-    type: SHOW_USER_INFO,
+    type: GET_USER_INFO,
     payload,
 });
 
 export const displayUserList = (payload) => ({
-    type: SHOW_USERS,
+    type: GET_USERS,
     payload,
 });

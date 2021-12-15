@@ -1,8 +1,7 @@
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import GroupIcon from '@material-ui/icons/Group';
+import React from 'react';
 
 const useStyles = makeStyles({
     root: {
@@ -15,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Header = () => {
+const Header = function () {
     const classes = useStyles();
 
     return (
