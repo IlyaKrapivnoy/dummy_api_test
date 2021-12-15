@@ -9,7 +9,7 @@ const defaultState = {
 export const usersReducer = (state = defaultState, action) => {
     switch (action.type) {
         case SHOW_USERS:
-            return { ...state, users: state.users.concat(action.payload) };
+            return { ...state, users: action.payload };
 
         case SHOW_USER_INFO:
             return { ...state, user: action.payload };
