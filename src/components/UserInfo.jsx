@@ -47,8 +47,7 @@ const UserInfo = () => {
         return <p>User not found</p>;
     }
 
-    let userDataOfBirthFromAPI = `${user.dateOfBirth}`;
-    let userDataOfBirth = new Date(userDataOfBirthFromAPI).toLocaleDateString();
+    let formattedDate = new Date(user.dateOfBirth).toLocaleDateString();
 
     return (
         <div className={classes.userProfile}>
@@ -62,7 +61,7 @@ const UserInfo = () => {
             </Typography>
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>Date of Birth:</span>{' '}
-                {userDataOfBirth}
+                {formattedDate}
             </Typography>
         </div>
     );
