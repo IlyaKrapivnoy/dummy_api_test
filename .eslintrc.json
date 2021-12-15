@@ -28,6 +28,20 @@
     ],
     "arrow-body-style": "off",
     "import/prefer-default-export": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
+      }
+    ]
   }
 }

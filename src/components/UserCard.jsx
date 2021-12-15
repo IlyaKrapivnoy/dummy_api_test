@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Card,
   CardActionArea,
@@ -7,7 +8,6 @@ import {
 } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
