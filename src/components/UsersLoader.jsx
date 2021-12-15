@@ -8,7 +8,7 @@ const UsersLoader = ({ children }) => {
 
     useEffect(() => {
         dispatch(toggleLoader(true));
-        axios.get('?limit=16').then((response) => {
+        axios.get('/user/?limit=16').then((response) => {
             dispatch(displayUserList(response.data.data));
             dispatch(toggleLoader(false));
         });

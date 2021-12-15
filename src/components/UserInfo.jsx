@@ -33,7 +33,7 @@ const UserInfo = () => {
 
     useEffect(() => {
         dispatch(toggleLoader(true));
-        axios.get(`/${id}`, {}).then((response) => {
+        axios.get(`/user/${id}`, {}).then((response) => {
             dispatch(displayUserInfo(response.data));
             dispatch(toggleLoader(false));
         });
