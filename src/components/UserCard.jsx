@@ -43,11 +43,11 @@ const UserCard = function({ user }) {
 
 UserCard.propTypes = {
     user: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.string,
         picture: PropTypes.string,
         firstName: PropTypes.string,
         lastName: PropTypes.string,
-    }),
+    }).isRequired,
 };
 
 const defaultProps = {};
