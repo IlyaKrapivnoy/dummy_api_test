@@ -3,7 +3,7 @@ import { CssBaseline } from '@material-ui/core';
 import Header from './Header';
 
 const useStyles = makeStyles({
-    cards: {
+    main: {
         margin: '90px 0 50px',
     },
 });
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         <div>
             <CssBaseline />
             <Header />
-            <div className={classes.cards}>{children}</div>
+            <main className={classes.main}>{children}</main>
         </div>
     );
 };
