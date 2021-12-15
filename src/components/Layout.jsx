@@ -1,6 +1,8 @@
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { CssBaseline } from '@material-ui/core';
 import Header from './Header';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
     main: {
@@ -17,6 +19,10 @@ const Layout = ({ children }) => {
             <main className={classes.main}>{children}</main>
         </div>
     );
+};
+
+Layout.propTypes = {
+    children: PropTypes.any,
 };
 
 export default Layout;

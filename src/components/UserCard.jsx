@@ -1,3 +1,4 @@
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {
@@ -7,6 +8,7 @@ import {
     CardContent,
 } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
     title: {
@@ -42,6 +44,15 @@ const UserCard = ({ user }) => {
             </Card>
         </>
     );
+};
+
+UserCard.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        picture: PropTypes.urlPropType,
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+    }),
 };
 
 export default UserCard;
