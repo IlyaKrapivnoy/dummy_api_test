@@ -5,28 +5,25 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Layout from './components/Layout';
 import UserInfo from './components/UserInfo';
 import Users from './components/Users';
-import UsersLoader from './components/UsersLoader';
 
 const App = () => {
-  return (
-    <UsersLoader>
-      <Router>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <Users />
-            </Route>
-            <Route path="/user/:id">
-              <UserInfo />
-            </Route>
-            <Route path="*">
-              <Redirect to="/" />
-            </Route>
-          </Switch>
-        </Layout>
-      </Router>
-    </UsersLoader>
-  );
+    return (
+        <Router>
+            <Layout>
+                <Switch>
+                    <Route exact path="/">
+                        <Users />
+                    </Route>
+                    <Route path="/user/:id">
+                        <UserInfo />
+                    </Route>
+                    <Route path="*">
+                        <Redirect to="/" />
+                    </Route>
+                </Switch>
+            </Layout>
+        </Router>
+    );
 };
 
 export default App;
