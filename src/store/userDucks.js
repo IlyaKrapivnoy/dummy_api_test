@@ -28,8 +28,8 @@ const userReducer = (state = initialState, action) => {
 export const readUser = (id) => async (dispatch) => {
     dispatch({ type: READ_USER_PENDING });
     try {
-        const response = await axios.get(`/${id}`);
-        dispatch({ type: READ_USER_SUCCEEDED, payload: response.data.data });
+        const response = await axios.get(`user/${id}`);
+        dispatch({ type: READ_USER_SUCCEEDED, payload: response.data });
     } catch (err) {
         dispatch({ type: READ_USER_FAILED, payload: err });
     }

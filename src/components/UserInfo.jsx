@@ -3,9 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Typography, makeStyles } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
 
-// import axios from '../axiosInstance';
 import { readUser, userSelector } from '../store/userDucks';
 import Loader from './Loader';
 
@@ -28,17 +26,11 @@ const useStyles = makeStyles({
 
 const UserInfo = () => {
     const classes = useStyles();
-
-    // const { id } = useParams();
-
-    // const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const userState = useSelector(userSelector);
     const { data, isLoading, error } = userState;
-    console.log(userState);
 
     const { id } = useParams();
-    console.log('useParams>>>', id);
 
     useEffect(() => {
         dispatch(readUser(id));
@@ -50,16 +42,8 @@ const UserInfo = () => {
     if (error) {
         return <div>{error}</div>;
     }
-    if (!data.length) {
+    if (!JSON.stringify(data) === '{}') {
         return <div>There is no user</div>;
-    }
-
-    const loading = useSelector((state) => state.loading);
-    if (loading) {
-        return <Loader />;
-    }
-    if (!Object.keys(data).length) {
-        return <p>User not found</p>;
     }
 
     const formattedDate = new Date(data.dateOfBirth).toLocaleDateString();
