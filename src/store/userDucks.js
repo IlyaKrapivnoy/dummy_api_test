@@ -13,14 +13,14 @@ const initialState = {
 // reducer
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-    case READ_USER_PENDING:
-        return { ...state, isLoading: true, error: '' };
-    case READ_USER_SUCCEEDED:
-        return { ...state, isLoading: false, data: action.payload };
-    case READ_USER_FAILED:
-        return { ...state, isLoading: false, error: action.payload };
-    default:
-        return state;
+        case READ_USER_PENDING:
+            return { ...state, isLoading: true, error: '' };
+        case READ_USER_SUCCEEDED:
+            return { ...state, isLoading: false, data: action.payload };
+        case READ_USER_FAILED:
+            return { ...state, isLoading: false, error: action.payload };
+        default:
+            return state;
     }
 };
 
