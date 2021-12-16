@@ -1,24 +1,38 @@
-import React from 'react';
-import { Container, Grid } from '@material-ui/core';
-import { useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-
+import React, { useEffect } from 'react';
+import { Grid } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
+import { readUsers, usersSelector } from '../store/usersDucks';
+import Loader from './Loader';
 import UserCard from './UserCard';
 
 const Users = () => {
-  const users = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+    const usersState = useSelector(usersSelector);
+    const { data, isLoading, error } = usersState;
 
-  return (
-    <Container>
-      <Grid container spacing={3}>
-        {users.map((user) => (
-          <Grid item xs={12} sm={6} md={3} key={uuidv4()}>
-            <UserCard user={user} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
-  );
+    useEffect(() => {
+        dispatch(readUsers());
+    }, []);
+
+    if (isLoading) {
+        return <Loader />;
+    }
+    if (error) {
+        return <div>{error}</div>;
+    }
+    if (!data.length) {
+        return <div>There are no users</div>;
+    }
+
+    return (
+        <Grid container spacing={3}>
+            {data.map((user, i) => (
+                <Grid item xs={12} sm={6} md={3} key={i}>
+                    <UserCard user={user} />
+                </Grid>
+            ))}
+        </Grid>
+    );
 };
 
 export default Users;
