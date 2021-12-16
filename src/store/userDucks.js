@@ -5,7 +5,7 @@ export const READ_USER_SUCCEEDED = 'DUMMY_API_PROJECT/USER/READ_USER_SUCCEEDED';
 export const READ_USER_FAILED = 'DUMMY_API_PROJECT/USER/READ_USER_FAILED';
 
 const initialState = {
-    data: [],
+    data: {},
     isLoading: true,
     error: '',
 };
