@@ -6,7 +6,7 @@ export const READ_USER_FAILED = 'DUMMY_API_PROJECT/USER/READ_USER_FAILED';
 
 const initialState = {
     data: {},
-    isLoading: true,
+    isLoading: false,
     error: '',
 };
 
@@ -25,8 +25,17 @@ const userReducer = (state = initialState, action) => {
 };
 
 // actions
-export const readUser = (id) => async (dispatch) => {
+export const readUser = (id) => async (dispatch, getState) => {
+    // get current state
+    const { data, isLoading } = getState().user
+
+    // return if user data is already loading
+    if (isLoading) return
+    // don't re-request user data if a user with this id has already been requested and there is data in state
+    if (data.id === id) return
+
     dispatch({ type: READ_USER_PENDING });
+
     try {
         const response = await axios.get(`user/${id}`);
         dispatch({ type: READ_USER_SUCCEEDED, payload: response.data });
