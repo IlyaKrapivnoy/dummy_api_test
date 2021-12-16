@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Typography, makeStyles } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import axios from '../axiosInstance';
-import { toggleLoader, readUsers } from '../store/usersDucks';
+import { Typography, makeStyles } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useParams } from 'react-router-dom';
+
+// import axios from '../axiosInstance';
+import { readUser, userSelector } from '../store/userDucks';
 import Loader from './Loader';
 
 const useStyles = makeStyles({
@@ -27,45 +29,55 @@ const useStyles = makeStyles({
 const UserInfo = () => {
     const classes = useStyles();
 
-    const { id } = useParams();
+    // const { id } = useParams();
 
+    // const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
+    const userState = useSelector(userSelector);
+    const { data, isLoading, error } = userState;
+    console.log(userState);
 
-    dispatch(getUser(id));
+    const { id } = useParams();
+    console.log('useParams>>>', id);
 
-    // useEffect(() => {
-    //     // dispatch(toggleLoader(true));
-    //     axios.get(`/user/${id}`, {}).then((response) => {
-    //         dispatch(readUsers(response.data));
-    //         // dispatch(toggleLoader(false));
-    //     });
-    // }, [dispatch, id]);
+    useEffect(() => {
+        dispatch(readUser(id));
+    }, []);
+
+    if (isLoading) {
+        return <Loader />;
+    }
+    if (error) {
+        return <div>{error}</div>;
+    }
+    if (!data.length) {
+        return <div>There is no user</div>;
+    }
 
     const loading = useSelector((state) => state.loading);
     if (loading) {
         return <Loader />;
     }
-    if (!Object.keys(user).length) {
+    if (!Object.keys(data).length) {
         return <p>User not found</p>;
     }
 
-    const formattedDate = new Date(user.dateOfBirth).toLocaleDateString();
+    const formattedDate = new Date(data.dateOfBirth).toLocaleDateString();
 
     return (
         <div className={classes.userProfile}>
-            <img src={user.picture} alt="user" className={classes.userPic} />
+            <img src={data.picture} alt="user" className={classes.userPic} />
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>Name:</span>
                 {' '}
-                {user.firstName}
+                {data.firstName}
                 {' '}
-                {user.lastName}
+                {data.lastName}
             </Typography>
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>Email:</span>
                 {' '}
-                {user.email}
+                {data.email}
             </Typography>
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>Date of Birth:</span>
