@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 const PostCard = ({ post }) => {
     const classes = useStyles();
 
-    let options = {
+    const options = {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -83,16 +83,27 @@ const PostCard = ({ post }) => {
     );
 };
 
-// PostCard.propTypes = {
-//     post: PropTypes.shape({
-//         id: PropTypes.string,
-//         picture: PropTypes.string,
-//         firstName: PropTypes.string,
-//         lastName: PropTypes.string,
-//     }).isRequired,
-// };
+PostCard.propTypes = {
+    options: PropTypes.shape({
+        weekday: PropTypes.string,
+        year: PropTypes.string,
+        month: PropTypes.string,
+        day: PropTypes.string,
+    }),
+    publishDate: PropTypes.string,
+    post: PropTypes.shape({
+        id: PropTypes.string,
+        text: PropTypes.string,
+        image: PropTypes.string,
+        likes: PropTypes.number,
+        publishDate: PropTypes.string,
+    }).isRequired,
+};
 
-// const defaultProps = {};
-// PostCard.defaultProps = defaultProps;
+const defaultProps = {
+    publishDate: '',
+    options: {},
+};
+PostCard.defaultProps = defaultProps;
 
 export default PostCard;
