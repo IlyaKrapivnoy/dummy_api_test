@@ -9,16 +9,26 @@ import {
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles({
     title: {
-        textAlign: 'center',
         fontSize: 14,
-        fontWeight: 'bold',
     },
     postInfo: {
         textAlign: 'center',
         fontSize: 12,
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    likeIcon: {
+        height: 16,
+    },
+    likesSection: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: 40,
     },
 });
 
@@ -50,13 +60,13 @@ const PostCard = ({ post }) => {
                     <Typography variant="subtitle1" className={classes.title}>
                         {post.text}
                     </Typography>
-                    <Typography
-                        variant="subtitle1"
-                        className={classes.postInfo}
-                    >
-                        {post.likes}
-                        {formattedDate}
-                    </Typography>
+                    <div className={classes.postInfo}>
+                        <Typography className={classes.likesSection}>
+                            <FavoriteBorderIcon className={classes.likeIcon} />{' '}
+                            {post.likes}
+                        </Typography>
+                        <Typography>{formattedDate}</Typography>
+                    </div>
                 </CardContent>
             </CardActionArea>
         </Card>
