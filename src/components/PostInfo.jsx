@@ -21,6 +21,8 @@ const useStyles = makeStyles({
     },
     userPic: {
         marginBottom: 30,
+        maxHeight: 300,
+        borderRadius: 10,
     },
 });
 
@@ -48,15 +50,24 @@ const PostInfo = () => {
 
     return (
         <div className={classes.userProfile}>
-            {/* <img src={data.picture} alt="post" className={classes.userPic} /> */}
+            {console.log(data)}
+
+            <img src={data.image} alt="post" className={classes.userPic} />
             <Typography className={classes.infoLine}>
-                {/* <span className={classes.titles}>Name:</span> {data.firstName}{' '} */}
-                {/* {data.lastName} */}
+                <span className={classes.titles}>POST:</span> {data.text}{' '}
             </Typography>
-            <Typography className={classes.infoLine}>
-                test
-                {/* <span className={classes.titles}>Email:</span> {data.email} */}
-            </Typography>
+            {data.tags && (
+                <Typography className={classes.infoLine}>
+                    <span className={classes.titles}>TAGS:</span>{' '}
+                    {data.tags.join(', ')}
+                </Typography>
+            )}
+            {data.link && (
+                <Typography className={classes.infoLine}>
+                    <span className={classes.titles}>LINK:</span>{' '}
+                    <a href={data.link}>{data.firstName}</a>
+                </Typography>
+            )}
         </div>
     );
 };
