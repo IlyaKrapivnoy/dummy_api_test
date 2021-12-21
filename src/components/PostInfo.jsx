@@ -19,10 +19,29 @@ const useStyles = makeStyles({
         padding: '30px 60px',
         letterSpacing: 2,
     },
-    userPic: {
+    postPic: {
         marginBottom: 30,
         maxHeight: 300,
         borderRadius: 10,
+    },
+    authorSection: {
+        display: 'flex',
+        marginBottom: 20,
+    },
+    authorPic: {
+        maxHeight: 50,
+        borderRadius: '50%',
+    },
+    authorInfo: {
+        textTransform: 'uppercase',
+        marginLeft: 26,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
+    authorName: {
+        fontWeight: 'bold',
+        fontSize: 13,
     },
 });
 
@@ -48,24 +67,39 @@ const PostInfo = () => {
         return <div>No posts found</div>;
     }
 
+    const formattedDate = new Date(data.publishDate).toLocaleDateString();
+
     return (
         <div className={classes.userProfile}>
             {console.log(data)}
 
-            <img src={data.image} alt="post" className={classes.userPic} />
+            <img src={data.image} alt="post" className={classes.postPic} />
+            <div className={classes.authorSection}>
+                <img
+                    src={data?.owner?.picture}
+                    alt="author"
+                    className={classes.authorPic}
+                />
+                <div className={classes.authorInfo}>
+                    <Typography className={classes.authorName}>
+                        {data?.owner?.firstName} {data?.owner?.lastName}
+                    </Typography>
+                    <Typography>{formattedDate}</Typography>
+                </div>
+            </div>
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>POST:</span> {data.text}{' '}
             </Typography>
-            {data.tags && (
-                <Typography className={classes.infoLine}>
-                    <span className={classes.titles}>TAGS:</span>{' '}
-                    {data.tags.join(', ')}
-                </Typography>
-            )}
+
+            <Typography className={classes.infoLine}>
+                <span className={classes.titles}>TAGS:</span>{' '}
+                {data?.tags?.join(', ')}
+            </Typography>
+
             {data.link && (
                 <Typography className={classes.infoLine}>
                     <span className={classes.titles}>LINK:</span>{' '}
-                    <a href={data.link}>{data.firstName}</a>
+                    <a href={data?.link}>{data?.link}</a>
                 </Typography>
             )}
         </div>

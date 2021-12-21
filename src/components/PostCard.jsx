@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Card,
     CardActionArea,
@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles({
     img: {
@@ -53,6 +54,14 @@ const PostCard = ({ post }) => {
         options
     );
 
+    const [like, setLike] = useState(post.likes);
+    const [isLiked, setIsLiked] = useState(false);
+
+    const handleLike = () => {
+        setLike(isLiked ? like - 1 : like + 1);
+        setIsLiked(!isLiked);
+    };
+
     return (
         <Card>
             <CardActionArea component={RouterLink} to={`/post/${post.id}`}>
@@ -63,22 +72,30 @@ const PostCard = ({ post }) => {
                     className={classes.img}
                     alt="posts"
                 />
-                <CardContent className={classes.infoSection}>
-                    <Typography variant="body2">{post.text}</Typography>
-                    <div className={classes.likesAndDateSection}>
-                        <Typography
-                            variant="caption"
-                            className={classes.likesSection}
-                        >
-                            <FavoriteBorderIcon className={classes.likeIcon} />{' '}
-                            {post.likes}
-                        </Typography>
-                        <Typography variant="caption">
-                            {formattedDate}
-                        </Typography>
-                    </div>
-                </CardContent>
             </CardActionArea>
+            <CardContent className={classes.infoSection}>
+                <Typography variant="body2">{post.text}</Typography>
+                <div className={classes.likesAndDateSection}>
+                    <Typography
+                        variant="caption"
+                        className={classes.likesSection}
+                    >
+                        {isLiked ? (
+                            <FavoriteIcon
+                                className={classes.likeIcon}
+                                onClick={handleLike}
+                            />
+                        ) : (
+                            <FavoriteBorderIcon
+                                className={classes.likeIcon}
+                                onClick={handleLike}
+                            />
+                        )}{' '}
+                        {like}
+                    </Typography>
+                    <Typography variant="caption">{formattedDate}</Typography>
+                </div>
+            </CardContent>
         </Card>
     );
 };
