@@ -52,20 +52,14 @@ const UserInfo = () => {
         <div className={classes.userProfile}>
             <img src={data.picture} alt="user" className={classes.userPic} />
             <Typography className={classes.infoLine}>
-                <span className={classes.titles}>Name:</span>
-                {' '}
-                {data.firstName}
-                {' '}
+                <span className={classes.titles}>Name:</span> {data.firstName}{' '}
                 {data.lastName}
             </Typography>
             <Typography className={classes.infoLine}>
-                <span className={classes.titles}>Email:</span>
-                {' '}
-                {data.email}
+                <span className={classes.titles}>Email:</span> {data.email}
             </Typography>
             <Typography className={classes.infoLine}>
-                <span className={classes.titles}>Date of Birth:</span>
-                {' '}
+                <span className={classes.titles}>Date of Birth:</span>{' '}
                 {formattedDate}
             </Typography>
         </div>

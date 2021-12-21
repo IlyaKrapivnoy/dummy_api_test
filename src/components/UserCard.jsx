@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 import {
     Card,
     CardActionArea,
     CardContent,
     CardMedia,
     makeStyles,
-} from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
-import PropTypes from 'prop-types'
-import { Link as RouterLink } from 'react-router-dom'
+} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
     title: {
@@ -16,10 +16,10 @@ const useStyles = makeStyles({
         fontSize: 14,
         fontWeight: 'bold',
     },
-})
+});
 
 const UserCard = ({ user }) => {
-    const classes = useStyles()
+    const classes = useStyles();
 
     return (
         <Card>
@@ -38,8 +38,8 @@ const UserCard = ({ user }) => {
                 </CardContent>
             </CardActionArea>
         </Card>
-    )
-}
+    );
+};
 
 UserCard.propTypes = {
     user: PropTypes.shape({
@@ -48,9 +48,9 @@ UserCard.propTypes = {
         firstName: PropTypes.string,
         lastName: PropTypes.string,
     }).isRequired,
-}
+};
 
-const defaultProps = {}
-UserCard.defaultProps = defaultProps
+const defaultProps = {};
+UserCard.defaultProps = defaultProps;
 
-export default UserCard
+export default UserCard;

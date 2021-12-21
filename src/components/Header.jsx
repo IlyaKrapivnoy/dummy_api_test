@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Link } from '@material-ui/core';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import GroupIcon from '@material-ui/icons/Group';
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
         alignItems: 'center',
         color: 'white',
         textDecoration: 'none',
-    }
+    },
 });
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
                     <NavLink to="/users" as={Link} className={classes.link}>
                         <GroupIcon />
                         <Typography variant="h6" className={classes.title}>
-                        USERS
+                            USERS
                         </Typography>
                     </NavLink>
                 </Toolbar>

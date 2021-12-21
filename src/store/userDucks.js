@@ -27,12 +27,12 @@ const userReducer = (state = initialState, action) => {
 // actions
 export const readUser = (id) => async (dispatch, getState) => {
     // get current state
-    const { data, isLoading } = getState().user
+    const { data, isLoading } = getState().user;
 
     // return if user data is already loading
-    if (isLoading) return
+    if (isLoading) return;
     // don't re-request user data if a user with this id has already been requested and there is data in state
-    if (data.id === id) return
+    if (data.id === id) return;
 
     dispatch({ type: READ_USER_PENDING });
 
