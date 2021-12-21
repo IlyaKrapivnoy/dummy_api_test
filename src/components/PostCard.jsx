@@ -18,7 +18,7 @@ const useStyles = makeStyles({
         minHeight: 200,
     },
     infoSection: {
-        minHeight: 100,
+        minHeight: 110,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
