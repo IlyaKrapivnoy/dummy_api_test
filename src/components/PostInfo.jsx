@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         padding: '30px 60px',
         letterSpacing: 2,
     },
-    postPic: {
+    mainPostPic: {
         marginBottom: 30,
         maxHeight: 300,
         borderRadius: 10,
@@ -71,9 +71,7 @@ const PostInfo = () => {
 
     return (
         <div className={classes.userProfile}>
-            {console.log(data)}
-
-            <img src={data.image} alt="post" className={classes.postPic} />
+            <img src={data.image} alt="post" className={classes.mainPostPic} />
             <div className={classes.authorSection}>
                 <img
                     src={data?.owner?.picture}

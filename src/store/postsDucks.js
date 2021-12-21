@@ -30,9 +30,9 @@ export const readPosts = () => async (dispatch, getState) => {
     // get current state
     const { data, isLoading } = getState().posts;
 
-    // return if users data is already loading
+    // return if posts data is already loading
     if (isLoading) return;
-    // don't re-request users data if it has already been requested and there is data in state
+    // don't re-request posts data if it has already been requested and there is data in state
     if (data.length) return;
 
     dispatch({ type: READ_POSTS_PENDING });

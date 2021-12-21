@@ -57,7 +57,7 @@ const PostCard = ({ post }) => {
     const [like, setLike] = useState(post.likes);
     const [isLiked, setIsLiked] = useState(false);
 
-    const handleLike = () => {
+    const handleLikes = () => {
         setLike(isLiked ? like - 1 : like + 1);
         setIsLiked(!isLiked);
     };
@@ -83,12 +83,12 @@ const PostCard = ({ post }) => {
                         {isLiked ? (
                             <FavoriteIcon
                                 className={classes.likeIcon}
-                                onClick={handleLike}
+                                onClick={handleLikes}
                             />
                         ) : (
                             <FavoriteBorderIcon
                                 className={classes.likeIcon}
-                                onClick={handleLike}
+                                onClick={handleLikes}
                             />
                         )}{' '}
                         {like}
