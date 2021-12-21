@@ -38,7 +38,7 @@ export const readPost = (id) => async (dispatch, getState) => {
 
     try {
         const response = await axios.get(`post/${id}`);
-        dispatch({ type: READ_POST_SUCCEEDED, payload: response.data.data });
+        dispatch({ type: READ_POST_SUCCEEDED, payload: response.data });
     } catch (err) {
         dispatch({ type: READ_POST_FAILED, payload: err });
     }
