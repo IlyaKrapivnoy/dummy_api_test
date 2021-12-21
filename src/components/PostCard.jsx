@@ -17,9 +17,9 @@ const useStyles = makeStyles({
     },
     postInfo: {
         textAlign: 'center',
-        fontSize: 12,
         display: 'flex',
         justifyContent: 'space-between',
+        marginTop: 6,
     },
     likeIcon: {
         height: 16,
@@ -29,6 +29,10 @@ const useStyles = makeStyles({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: 40,
+        fontSize: 13,
+    },
+    date: {
+        fontSize: 13,
     },
 });
 
@@ -65,7 +69,9 @@ const PostCard = ({ post }) => {
                             <FavoriteBorderIcon className={classes.likeIcon} />{' '}
                             {post.likes}
                         </Typography>
-                        <Typography>{formattedDate}</Typography>
+                        <Typography className={classes.date}>
+                            {formattedDate}
+                        </Typography>
                     </div>
                 </CardContent>
             </CardActionArea>
