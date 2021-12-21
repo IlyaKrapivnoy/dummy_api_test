@@ -22,7 +22,7 @@ const App = () => {
                     <Route path="/posts">
                         <Posts />
                     </Route>
-                    <Route path="/posts/:id">
+                    <Route path="/post/:id">
                         <PostInfo />
                     </Route>
                     <Route path="*">

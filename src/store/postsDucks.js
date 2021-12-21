@@ -2,7 +2,7 @@ import axios from '../axiosInstance';
 
 export const READ_POSTS_PENDING = 'DUMMY_API_PROJECT/POSTS/READ_POSTS_PENDING';
 export const READ_POSTS_SUCCEEDED =
-    'DUMMY_API_PROJECT/USERS/READ_USERS_SUCCEEDED';
+    'DUMMY_API_PROJECT/POSTS/READ_POSTS_SUCCEEDED';
 export const READ_POSTS_FAILED = 'DUMMY_API_PROJECT/POSTS/READ_POSTS_FAILED';
 
 const initialState = {
@@ -46,7 +46,7 @@ export const readPosts = () => async (dispatch, getState) => {
 };
 
 // selectors
-export const usersSelector = (state) => state.posts;
+export const postsSelector = (state) => state.posts;
 
 // reducer is exported by default
 export default postsReducer;

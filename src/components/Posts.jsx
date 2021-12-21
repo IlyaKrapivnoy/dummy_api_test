@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { readPosts, usersSelector } from '../store/postsDucks';
+import { readPosts, postsSelector } from '../store/postsDucks';
 import Loader from './Loader';
 import PostCard from './PostCard';
 
 const Users = () => {
     const dispatch = useDispatch();
-    const postsState = useSelector(usersSelector);
+    const postsState = useSelector(postsSelector);
     const { data, isLoading, error } = postsState;
 
     useEffect(() => {
