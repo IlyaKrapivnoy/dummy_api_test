@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import postsReducer from './postsDucks';
 import userReducer from './userDucks';
 import usersReducer from './usersDucks';
 
@@ -12,6 +13,7 @@ const composeEnhancers =
 const rootReducer = combineReducers({
     users: usersReducer,
     user: userReducer,
+    posts: postsReducer,
 });
 export const store = createStore(
     rootReducer,
