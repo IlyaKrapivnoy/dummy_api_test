@@ -12,7 +12,17 @@ import { Link as RouterLink } from 'react-router-dom';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const useStyles = makeStyles({
-    postInfo: {
+    img: {
+        objectFit: 'cover',
+        minHeight: 200,
+    },
+    infoSection: {
+        minHeight: 100,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    },
+    likesAndDateSection: {
         textAlign: 'center',
         display: 'flex',
         justifyContent: 'space-between',
@@ -50,12 +60,12 @@ const PostCard = ({ post }) => {
                     component="img"
                     height="100"
                     image={post.image}
-                    style={{ objectFit: 'contain' }}
+                    className={classes.img}
                     alt="posts"
                 />
-                <CardContent>
+                <CardContent className={classes.infoSection}>
                     <Typography variant="body2">{post.text}</Typography>
-                    <div className={classes.postInfo}>
+                    <div className={classes.likesAndDateSection}>
                         <Typography
                             variant="caption"
                             className={classes.likesSection}
