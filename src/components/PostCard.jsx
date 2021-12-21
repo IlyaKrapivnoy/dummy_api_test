@@ -25,6 +25,17 @@ const useStyles = makeStyles({
 const PostCard = ({ post }) => {
     const classes = useStyles();
 
+    let options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+    const formattedDate = new Date(post.publishDate).toLocaleDateString(
+        'en-US',
+        options
+    );
+
     return (
         <Card>
             <CardActionArea component={RouterLink} to={`/post/${post.id}`}>
@@ -44,7 +55,7 @@ const PostCard = ({ post }) => {
                         className={classes.postInfo}
                     >
                         {post.likes}
-                        {post.publishDate}
+                        {formattedDate}
                     </Typography>
                 </CardContent>
             </CardActionArea>
