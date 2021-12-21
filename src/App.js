@@ -3,6 +3,7 @@ import { Redirect, Switch } from 'react-router';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import Layout from './components/Layout';
+import Posts from './components/Posts';
 import UserInfo from './components/UserInfo';
 import Users from './components/Users';
 
@@ -16,6 +17,9 @@ const App = () => {
                     </Route>
                     <Route path="/user/:id">
                         <UserInfo />
+                    </Route>
+                    <Route path="/posts">
+                        <Posts />
                     </Route>
                     <Route path="*">
                         <Redirect to="/" />

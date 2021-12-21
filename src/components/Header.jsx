@@ -2,7 +2,6 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Link } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import GroupIcon from '@material-ui/icons/Group';
 
 const useStyles = makeStyles({
     root: {
@@ -29,9 +28,13 @@ const Header = () => {
             <AppBar position="fixed">
                 <Toolbar>
                     <NavLink to="/users" as={Link} className={classes.link}>
-                        <GroupIcon />
                         <Typography variant="h6" className={classes.title}>
                             USERS
+                        </Typography>
+                    </NavLink>
+                    <NavLink to="/posts" as={Link} className={classes.link}>
+                        <Typography variant="h6" className={classes.title}>
+                            POSTS
                         </Typography>
                     </NavLink>
                 </Toolbar>
