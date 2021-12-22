@@ -54,11 +54,11 @@ const PostCard = ({ post }) => {
         options
     );
 
-    const [like, setLike] = useState(post.likes);
+    const [likesNumber, setLikesNumber] = useState(post.likes);
     const [isLiked, setIsLiked] = useState(false);
 
     const handleLikes = () => {
-        setLike(isLiked ? like - 1 : like + 1);
+        setLikesNumber(isLiked ? likesNumber - 1 : likesNumber + 1);
         setIsLiked(!isLiked);
     };
 
@@ -91,7 +91,7 @@ const PostCard = ({ post }) => {
                                 onClick={handleLikes}
                             />
                         )}{' '}
-                        {like}
+                        {likesNumber}
                     </Typography>
                     <Typography variant="caption">{formattedDate}</Typography>
                 </div>
