@@ -5,7 +5,7 @@ import { readPosts, postsSelector } from '../store/postsDucks';
 import Loader from './Loader';
 import PostCard from './PostCard';
 
-const Users = () => {
+const Posts = () => {
     const dispatch = useDispatch();
     const postsState = useSelector(postsSelector);
     const { data, isLoading, error } = postsState;
@@ -37,4 +37,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default Posts;
