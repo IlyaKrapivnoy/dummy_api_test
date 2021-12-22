@@ -74,7 +74,7 @@ const PostInfo = () => {
             <img src={data.image} alt="post" className={classes.mainPostPic} />
             <div className={classes.authorSection}>
                 <img
-                    src={data?.owner?.picture}
+                    src={data.owner?.picture}
                     alt="author"
                     className={classes.authorPic}
                 />
@@ -91,7 +91,7 @@ const PostInfo = () => {
 
             <Typography className={classes.infoLine}>
                 <span className={classes.titles}>TAGS:</span>{' '}
-                {data?.tags?.join(', ')}
+                {data.tags?.join(', ')}
             </Typography>
 
             {data.link && (
