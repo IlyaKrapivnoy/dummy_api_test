@@ -111,7 +111,7 @@ PostCard.propTypes = {
             lastName: PropTypes.string,
             picture: PropTypes.string,
         }),
-        tags: PropTypes.instanceOf(Array),
+        tags: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
 };
 
