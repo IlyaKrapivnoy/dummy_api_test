@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { Box, Grid } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { readUsers, usersSelector } from '../store/usersDucks';
+import { readPosts, postsSelector } from '../store/postsDucks';
 import Loader from './Loader';
-import UserCard from './UserCard';
+import PostCard from './PostCard';
 
-const Users = () => {
+const Posts = () => {
     const dispatch = useDispatch();
-    const usersState = useSelector(usersSelector);
-    const { data, isLoading, error } = usersState;
+    const postsState = useSelector(postsSelector);
+    const { data, isLoading, error } = postsState;
 
     useEffect(() => {
-        dispatch(readUsers());
+        dispatch(readPosts());
     }, []);
 
     if (isLoading) {
@@ -21,15 +21,15 @@ const Users = () => {
         return <div>{error}</div>;
     }
     if (!data.length) {
-        return <div>There are no users</div>;
+        return <div>There are no posts</div>;
     }
 
     return (
         <Box mx={4}>
             <Grid container spacing={3}>
-                {data.map((user) => (
-                    <Grid item xs={12} sm={6} md={3} key={user.id}>
-                        <UserCard user={user} />
+                {data.map((post) => (
+                    <Grid item xs={12} sm={6} md={3} key={post.id}>
+                        <PostCard post={post} />
                     </Grid>
                 ))}
             </Grid>
@@ -37,4 +37,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default Posts;
